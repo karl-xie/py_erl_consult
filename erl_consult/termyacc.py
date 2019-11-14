@@ -117,13 +117,14 @@ def consult(filename):
     result = parser.parse(s, lexer)
     return result
 
+if __name__ == '__main__':
+    data = '''
+    #{abc => 100, bcd => 200, 1 => [900]}.
+    [{ip, <<"192.168.0.1">>}, {port, 8080}].
+    '''
+    lexer = termlex.lexer
+    parser = yacc.yacc()
 
-data = '''
-#{abc => 100, bcd => 200, [1,2,3] => [900]}.
-'''
-lexer = termlex.lexer
-parser = yacc.yacc()
-
-result = parser.parse(data, lexer)
-print result
+    result = parser.parse(data, lexer)
+    print result
 
